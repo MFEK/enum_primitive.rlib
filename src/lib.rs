@@ -91,8 +91,8 @@ macro_rules! enum_to_primitive_impl_ty {
 macro_rules! enum_to_primitive_impl {
     ($name:ident) => {
         impl $crate::ToPrimitive for $name {
-            enum_to_primitive_impl_ty! { to_i64, i64, $name }
-            enum_to_primitive_impl_ty! { to_u64, u64, $name }
+            $crate::enum_to_primitive_impl_ty! { to_i64, i64, $name }
+            $crate::enum_to_primitive_impl_ty! { to_u64, u64, $name }
         }
     };
 }
@@ -102,8 +102,8 @@ macro_rules! enum_to_primitive_impl {
 macro_rules! enum_from_primitive_impl {
     ($name:ident, $( $variant:ident )*) => {
         impl $crate::FromPrimitive for $name {
-            enum_from_primitive_impl_ty! { from_i64, i64, $name, $( $variant )* }
-            enum_from_primitive_impl_ty! { from_u64, u64, $name, $( $variant )* }
+            $crate::enum_from_primitive_impl_ty! { from_i64, i64, $name, $( $variant )* }
+            $crate::enum_from_primitive_impl_ty! { from_u64, u64, $name, $( $variant )* }
         }
     };
 }
@@ -122,7 +122,7 @@ macro_rules! enum_from_primitive {
         enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
     };
 
     (
@@ -135,7 +135,7 @@ macro_rules! enum_from_primitive {
         enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),*
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
     };
 
     (
@@ -148,7 +148,7 @@ macro_rules! enum_from_primitive {
         enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*,
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
     };
 
     (
@@ -161,7 +161,7 @@ macro_rules! enum_from_primitive {
         enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),+,
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
     };
 
     (
@@ -174,7 +174,7 @@ macro_rules! enum_from_primitive {
         pub enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
     };
 
     (
@@ -187,7 +187,7 @@ macro_rules! enum_from_primitive {
         pub enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),*
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
     };
 
     (
@@ -200,7 +200,7 @@ macro_rules! enum_from_primitive {
         pub enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*,
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
     };
 
     (
@@ -213,7 +213,7 @@ macro_rules! enum_from_primitive {
         pub enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),+,
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
     };
 }
 
@@ -232,8 +232,8 @@ macro_rules! enum_primitive {
         enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_to_primitive_impl! { $name }
     };
 
     (
@@ -246,8 +246,8 @@ macro_rules! enum_primitive {
         enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),*
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
+        $crate::enum_to_primitive_impl! { $name }
     };
 
     (
@@ -260,8 +260,8 @@ macro_rules! enum_primitive {
         enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*,
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_to_primitive_impl! { $name }
     };
 
     (
@@ -274,8 +274,8 @@ macro_rules! enum_primitive {
         enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),+,
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
+        $crate::enum_to_primitive_impl! { $name }
     };
 
     (
@@ -288,8 +288,8 @@ macro_rules! enum_primitive {
         pub enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_to_primitive_impl! { $name }
     };
 
     (
@@ -302,8 +302,8 @@ macro_rules! enum_primitive {
         pub enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),*
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )* }
+        $crate::enum_to_primitive_impl! { $name }
     };
 
     (
@@ -316,8 +316,8 @@ macro_rules! enum_primitive {
         pub enum $name {
             $( $( #[$variant_attr] )* $variant ),+ $( = $discriminator, $( $( #[$variant_two_attr] )* $variant_two ),+ )*,
         }
-        enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $variant )+ $( $( $variant_two )+ )* }
+        $crate::enum_to_primitive_impl! { $name }
     };
 
     (
@@ -330,7 +330,7 @@ macro_rules! enum_primitive {
         pub enum $name {
             $( $( $( #[$variant_attr] )* $variant ),+ = $discriminator ),+,
         }
-        enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
-        enum_to_primitive_impl! { $name }
+        $crate::enum_from_primitive_impl! { $name, $( $( $variant )+ )+ }
+        $crate::enum_to_primitive_impl! { $name }
     };
 }

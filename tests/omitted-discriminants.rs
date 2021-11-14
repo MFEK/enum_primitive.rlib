@@ -1,4 +1,4 @@
-#[macro_use] extern crate enum_primitive;
+use enum_primitive::enum_from_primitive;
 
 enum_from_primitive! { enum E { } }
 enum_from_primitive! { enum E0 { V0 } }

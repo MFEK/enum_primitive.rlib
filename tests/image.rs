@@ -1,6 +1,6 @@
-#[macro_use] extern crate enum_primitive;
-
 mod gif {
+    use enum_primitive::enum_from_primitive;
+
     enum_from_primitive! {
     /// Known block types
     enum Block {
@@ -32,6 +32,8 @@ mod gif {
 }
 
 mod png {
+    use enum_primitive::enum_from_primitive;
+
     enum_from_primitive! {
     #[derive(Clone, Copy, Debug, PartialEq)]
     enum InterlaceMethod {
@@ -53,6 +55,8 @@ mod png {
 }
 
 mod tiff {
+    use enum_primitive::enum_from_primitive;
+
     enum_from_primitive! {
     #[derive(Clone, Copy, Debug, PartialEq)]
     enum PhotometricInterpretation {
