@@ -1,4 +1,4 @@
-# enum_primitive [![Build Status](https://travis-ci.org/andersk/enum_primitive-rs.svg?branch=master)](https://travis-ci.org/andersk/enum_primitive-rs)
+# enum\_primitive [![Build Status](https://travis-ci.org/MFEK/enum_primitive.rlib.svg?branch=master)](https://travis-ci.org/MFEK/enum_primitive.rlib)
 
 This crate exports a macro `enum_from_primitive!` that wraps an
 `enum` declaration and automatically adds an implementation of
@@ -8,9 +8,12 @@ alternative to the built-in `#[derive(FromPrimitive)]`, which
 requires the unstable `std::num::FromPrimitive` and is disabled in
 Rust 1.0.
 
+Note: This is the MFEK fork, the original author Anders Kaseorg abandoned the
+project without a maintainer in 2017.
+
 ## Documentation
 
-https://andersk.github.io/enum_primitive-rs/enum_primitive/
+[https://mfek.org/enum\_primitive-rs/enum\_primitive/](https://mfek.org/enum_primitive.rlib/enum_primitive/)
 
 ## Usage
 

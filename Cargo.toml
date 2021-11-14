@@ -1,9 +1,9 @@
 [package]
 name = "enum_primitive"
-version = "0.1.1"
+version = "0.2.0"
 license = "MIT"
-description = "Macro to generate num::FromPrimitive instances for enum that works in Rust 1.0"
-authors = ["Anders Kaseorg <andersk@mit.edu>"]
+description = "Macro to generate num::FromPrimitive instances for enum that works in Rust 1.0 (MFEK fork)"
+authors = ["Anders Kaseorg <andersk@mit.edu>", "Fredrick Brennan <copypaste@kittens.ph>"]
 documentation = "https://andersk.github.io/enum_primitive-rs/enum_primitive/"
 repository = "https://github.com/andersk/enum_primitive-rs.git"
 homepage = "https://github.com/andersk/enum_primitive-rs"
