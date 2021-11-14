@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["enum_primitive","num_traits"];
