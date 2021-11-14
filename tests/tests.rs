@@ -1,4 +1,5 @@
-#[macro_use] extern crate enum_primitive as ep;
+use enum_primitive as ep;
+use ep::enum_from_primitive;
 
 enum_from_primitive! {
 enum Unused {
@@ -204,6 +205,7 @@ fn negative() {
 #[test]
 fn in_local_mod() {
     mod local_mod {
+        use enum_primitive::enum_from_primitive;
         enum_from_primitive! {
         #[derive(Debug, PartialEq)]
         pub enum InLocalMod {
@@ -239,6 +241,7 @@ fn to_primitive() {
     use ep::ToPrimitive;
 
     mod top {
+        use enum_primitive::enum_primitive;
         enum_primitive! {
         #[derive(Debug, PartialEq)]
         #[repr(u64)]

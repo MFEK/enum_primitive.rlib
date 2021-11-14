@@ -8,6 +8,7 @@ documentation = "https://andersk.github.io/enum_primitive-rs/enum_primitive/"
 repository = "https://github.com/andersk/enum_primitive-rs.git"
 homepage = "https://github.com/andersk/enum_primitive-rs"
 readme = "README.md"
+edition = "2021"
 
 [dependencies.num-traits]
 version = "0.2"
