@@ -33,7 +33,7 @@
 //! ```
 //! #[macro_use]
 //! extern crate enum_primitive;
-//! use enum_primitive::num_traits::FromPrimitive;
+//! use enum_primitive::FromPrimitive;
 //!
 //! enum_from_primitive! {
 //! #[derive(Debug, PartialEq)]
